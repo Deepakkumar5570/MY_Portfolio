@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <!-- Responsive Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Brand -->
+                <a href="#home" class="text-blue-500 font-bold text-xl">Portfolio</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="#home"
+                        class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#projects"
+                        class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#experience"
+                        class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                    <a href="#skills"
+                        class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+
+                <!-- Mobile toggle button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-500 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#home"
+                class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Home</a>
+            <a href="#projects"
+                class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Projects</a>
+            <a href="#experience"
+                class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Experience</a>
+            <a href="#skills"
+                class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Skills</a>
+            <a href="#contact"
+                class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Contact</a>
+        </div>
+    </nav>
+
+    <script>
+        // Toggle mobile menu visibility
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                        Hi, I'm <span class="text-blue-500">Deepak Kumar</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 mb-6">
+                        Ex-Research Intern @IIT Kanpur | Data Science | AI | ML | MERN Stack
+                    </h2>
+                    <p class="text-gray-600 mb-8 max-w-lg">
+                        I'm a final-year B.Tech (Hons.) Data Science student at CSVTU Bhilai, passionate about creating
+                        real-world, impactful solutions through Artificial Intelligence, Machine Learning, and Computer
+                        Vision while also building a solid foundation in full stack development.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Hire Me
+                        </a>
+                        <a href="#projects"
+                            class="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">
+                            View Work
+                        </a>
+                        <!-- Resume Download Button -->
+                        <a href="assets/Deepak_Kumar_Resume.pdf" download
+                            class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center fade-in delay-1">
+                    <div
+                        class="relative w-80 h-80 md:w-[22rem] md:h-[22rem] rounded-full overflow-hidden border-4 border-blue-500 shadow-xl">
+                        <img src="images/deepak_img.jpg" alt="Profile"
+                            class="w-full h-full object-cover object-[40%_top] scale-[1.40] mt-9">
+                    </div>
+
+
+
+                </div>
+            </div>
+    </section>
+
+
+    <!-- Projects Section as Cards -->
+    <section id="projects" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Projects</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">A selection of my key machine learning and full‑stack
+                    applications.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
+                    <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                            alt="Potato Disease Classifier" class="h-24">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Potato Disease Classifier</h3>
+                        <p class="text-gray-500 text-sm mb-3">2024 · Bhilai, India</p>
+                        <p class="text-gray-600 mb-4">Deep Learning-based system for multi-class potato disease
+                            detection with 99.76% accuracy.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Machine Learning</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">CNN</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Computer Vision</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://huggingface.co/spaces/Deepakkumar5570/PotatoSage"
+                                class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="https://github.com/Deepakkumar5570/PotatoSage"
+                                class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-2">
+                    <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9-D83RV7OcEa0YkvgxsoxfNFTvpJS1Jm-wA&s"
+                            alt="Email Ham Spam Checker" class="h-16">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Email Ham Spam Checker</h3>
+                        <p class="text-gray-500 text-sm mb-3">Sep 2024 · Bhilai, India</p>
+                        <p class="text-gray-600 mb-4">ML application classifying emails as ham or spam with 97.65%
+                            accuracy.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Naive Bayes</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Django</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Scikit‑Learn</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Deepakkumar5570/Email_ham_spam_checker"
+                                class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-3">
+                    <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4igQnwRd41CVpcP5wzLqORPqXdU6yp_hoHA&s"
+                            alt="Movie Recommendation System" class="h-16">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Movie Recommendation System</h3>
+                        <p class="text-gray-500 text-sm mb-3">2024 · Bhilai, India</p>
+                        <p class="text-gray-600 mb-4">Content-based recommender using NLP (cosine similarity) on TMDB
+                            dataset.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-teal-100 text-teal-800 text-xs px-2 py-1 rounded">Scikit‑Learn</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">NLP</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Pandas</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Deepakkumar5570/Movie-Recommendation-System"
+                                class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4">
+                    <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxffniRLY_ZIivktObXOLje7V-rTpWkiP_MQ&s"
+                            alt="AirStay" class="h-16">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-1">Airbnb Clone – AirStay</h3>
+                        <p class="text-gray-500 text-sm mb-3">2023 · Bhilai, India</p>
+                        <p class="text-gray-600 mb-4">Full‑stack based Room booking platform with responsive UI and
+                            dynamic
+                            listings.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">HTML & CSS</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://airstay-web.onrender.com"
+                                class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="https://github.com/Deepakkumar5570/airbnb-clone"
+                                class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="text-center mt-12 fade-in delay-5">
+                <a href="#"
+                    class="inline-block border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">View
+                    All Projects</a>
+            </div>
+        </div>
+    </section>
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center mb-12 fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Work Experience</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">My professional journey and the valuable experiences I've gained
+                along the way.</p>
+        </div>
+
+        <div id="experienceCards" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Experience Card 1 -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Early Stage Disease Detection in Plant Leaves
+                    </h3>
+                    <p class="text-blue-500 text-sm mb-4">Perception & Intelligence Lab, IIT Kanpur | Jan–Jul 2025</p>
+                    <!-- Skills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">UV Imaging</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Vision Transformers</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Raspberry Pi</span>
+                    </div>
+                    <!-- Links -->
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" onclick="openExperienceModal(0)"
+                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="https://github.com/Deepakkumar5570/uv-nonuv-project" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        <a href="https://your-demo-link.com" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Card 2 -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Spectral Response Analysis for Plant Health
+                    </h3>
+                    <p class="text-blue-500 text-sm mb-4">Perception & Intelligence Lab, IIT Kanpur | Jan 2025 – Present
+                    </p>
+                    <!-- Skills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Hyperspectral</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">PCA</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Band‑Ratios</span>
+                    </div>
+                    <!-- Links -->
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" onclick="openExperienceModal(1)"
+                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="https://github.com/Deepakkumar5570/hyperspectral-analysis" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        <a href="https://your-demo-link.com" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Card 3 -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Automated Leaf Disease Detection</h3>
+                    <p class="text-blue-500 text-sm mb-4">Perception & Intelligence Lab, IIT Kanpur | Apr 2025 – Present
+                    </p>
+                    <!-- Skills -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">YOLOv8</span>
+                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Focus Scoring</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">ViT</span>
+                    </div>
+                    <!-- Links -->
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" onclick="openExperienceModal(2)"
+                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="https://github.com/Deepakkumar5570/yolov8-vit-pipeline" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                        <a href="https://your-demo-link.com" target="_blank"
+                            class="text-gray-500 hover:text-gray-700 font-medium">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Popup -->
+        <div id="experienceModal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50">
+            <div class="flex items-center justify-center min-h-screen px-4">
+                <div class="bg-white rounded-2xl w-full max-w-4xl p-10 relative shadow-2xl">
+                    <button onclick="closeExperienceModal()"
+                        class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    <div id="modalContent" class="text-gray-700 space-y-4"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- Skills & Courses Section -->
+    <section id="skills" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Skills & Achievements</h2>
+                <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Core competencies, courses, trainings, and recognitions.</p>
+            </div>
+
+            <!-- Relevant Courses & Skills -->
+            <div class="overflow-x-auto whitespace-nowrap py-4 fade-in delay-1">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 inline-block">Relevant Courses & Skills:</h3>
+                <br>
+                <div class="inline-flex gap-4 animate-marquee">
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Operating System</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Data Structures &
+                        Algorithms</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Deep Learning</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Computer Networks</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Machine Learning</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Cryptography</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Python</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">NLP</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">OOPs</span>
+
+
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Scikit-Learn</span>
+                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">REST API</span>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <!-- Tools & Technologies -->
+            <div class="mt-12 fade-in delay-3">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Tools & Technologies</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+
+                    <!-- Tool Card Template -->
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-brain text-gray-700 text-2xl mr-2"></i>
+                        <span>TensorFlow</span>
+                    </div>
+                    <!-- Pandas -->
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-database text-green-600 text-2xl mr-2"></i>
+                        <span>Pandas</span>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-square-root-alt text-purple-600 text-2xl mr-2"></i>
+                        <span>NumPy</span>
+                    </div>
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-docker text-blue-600 text-2xl mr-2"></i>
+                        <span>Docker</span>
+                    </div>
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-aws text-orange-500 text-2xl mr-2"></i>
+                        <span>AWS</span>
+                    </div>
+
+
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-react text-blue-600 text-2xl mr-2"></i>
+                        <span>React</span>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-node-js text-green-600 text-2xl mr-2"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <!-- MongoDB -->
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-database text-green-700 text-2xl mr-2"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    <!-- SQL -->
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-database text-blue-700 text-2xl mr-2"></i>
+                        <span>MySQL</span>
+                    </div>
+
+                    <!-- New Tools -->
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-git-alt text-red-600 text-2xl mr-2"></i>
+                        <span>Git</span>
+                    </div>
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fab fa-github text-black text-2xl mr-2"></i>
+                        <span>GitHub</span>
+                    </div>
+
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
+                        <i class="fas fa-cogs text-purple-700 text-2xl mr-2"></i>
+                        <span>PyTorch</span>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experiencee" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4
+                    ">Online Courses and Certificates</h2>
+                <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
+            </div>
+
+            <!-- Training / Courses -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 fade-in delay-2">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Web App Development & Data Structures</h3>
+                    <p class="text-gray-500 text-sm mb-4">Apna College (Virtual) · 2024–Present</p>
+                    <p class="text-gray-600">Gained expertise in JavaScript, MongoDB, Express.js, Node.js, and advanced
+                        data structures through hands-on projects and exercises.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Certificates</h3>
+                    <p class="text-gray-600 mb-4">Explore detailed certificates for courses and achievements.</p>
+                    <a href="https://drive.google.com/drive/u/0/folders/14zv9fAwQPqj4qMM4GkOzIHmoxLOvqef1"
+                        class="text-indigo-500 hover:underline font-medium">View Certificates</a>
+                </div>
+            </div>
+            <!-- Key Accomplishments Card -->
+            <div class="mt-12 fade-in delay-3">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Accomplishments</h3>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>Ranked 5th in State-Level General Knowledge & Aptitude Test.</li>
+                        <li>Won cash prize for best rank in intercollege competition.</li>
+                        <li>Awarded 1st prize in intercollege drawing competition.</li>
+                    </ul>
+                </div>
+            </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- Contact Section with Modal Form -->
+    <section id="contact" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+            <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+                Have a project in mind or want to discuss potential opportunities?
+            </p>
+            <!-- Trigger Button -->
+            <button id="openContactBtn"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition">
+                Contact Me
+            </button>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg w-full max-w-md p-6 relative fade-in animate-fade-in-down">
+                <!-- Close Button -->
+                <button id="closeModalBtn"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl leading-none">
+                    &times;
+                </button>
+
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Send Me a Message</h3>
+
+                <!-- ==== UPDATE THIS ACTION URL with your Formspree endpoint ==== -->
+                <form id="contactForm" action="https://formspree.io/f/mwpqvraz" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="New message from portfolio site" />
+                    <div>
+                        <label for="name" class="block text-gray-700 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 mb-1">Email Address (sender's)</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+                        Send Message
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="formSuccess" class="mt-4 p-4 bg-green-100 text-green-700 rounded-lg hidden">
+                    Thanks! Your message has been sent.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Modal & Form JS ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openBtn = document.getElementById('openContactBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const modal = document.getElementById('contactModal');
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('formSuccess');
+
+            // Open modal
+            openBtn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                successMsg.classList.add('hidden');
+                form.classList.remove('hidden');
+                form.reset();
+            });
+
+            // Close when clicking outside modal content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeBtn.click();
+                }
+            });
+
+            // Handle form submission via AJAX
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: data
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            form.classList.add('hidden');
+                            successMsg.classList.remove('hidden');
+                        } else {
+                            alert('Oops! There was a problem sending your message.');
+                        }
+                    })
+                    .catch(() => {
+                        alert('Oops! There was a problem sending your message.');
+                    });
+            });
+        });
+    </script>
+
+
+    <!-- Modal Toggle & Form Handling Script -->
+    <script>
+        const openBtn = document.getElementById('openContactBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('contactModal');
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('formSuccess');
+
+        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden'); });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+            if (resp.ok) {
+                form.reset();
+                successMsg.classList.remove('hidden');
+            } else {
+                alert('Oops! There was a problem sending your message.');
+            }
+        });
+    </script>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 px-4 mt-16">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold text-white">Deepak Kumar</a>
+                    <p class="text-gray-400 mt-2 max-w-sm">Creating AI & Computer Vision solutions with purpose and
+                        precision.</p>
+                </div>
+                <div class="flex flex-col items-start space-y-4 md:space-y-0 md:flex-row md:items-center md:space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition duration-300">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/deepak-kumar-029781263/" target="_blank"
+                    class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://github.com/Deepakkumar5570" target="_blank"
+                    class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://leetcode.com/u/Deepak5570/" target="_blank"
+                    class="text-gray-400 hover:text-white transition">
+                    <i class="fas fa-code text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/deepak_kumar2.o/" target="_blank"
+                    class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 Deepak Kumar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="script.js"></script>
+</body>
+
+</html>
