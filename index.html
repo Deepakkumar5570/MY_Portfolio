@@ -12,13 +12,18 @@
 
 <body class="bg-gray-50 font-sans">
     <!-- Responsive Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-10">
+    <!-- NAVIGATION -->
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo / Brand -->
-                <a href="#home" class="text-blue-500 font-bold text-xl">Portfolio</a>
 
-                <!-- Desktop Menu -->
+                <!-- ✅ Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                    <img src="images/d.png" alt="Logo" class="h-16 w-16 object-cover" />
+                    <span class="text-blue-500 font-bold text-xl"></span>
+                </a>
+
+                <!-- ✅ Desktop Menu -->
                 <div class="hidden md:flex space-x-4">
                     <a href="#home"
                         class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
@@ -32,7 +37,7 @@
                         class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                 </div>
 
-                <!-- Mobile toggle button -->
+                <!-- ✅ Mobile Toggle Button -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-500 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,8 +49,8 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
+        <!-- ✅ Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
             <a href="#home"
                 class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-500">Home</a>
             <a href="#projects"
@@ -59,14 +64,6 @@
         </div>
     </nav>
 
-    <script>
-        // Toggle mobile menu visibility
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
 
 
     <!-- Hero Section -->
@@ -346,13 +343,12 @@
             <div class="text-center mb-12 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Skills & Achievements</h2>
                 <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Core competencies, courses, trainings, and recognitions.</p>
+                <!-- <p class="text-gray-600 max-w-2xl mx-auto">Core competencies, courses, trainings, and recognitions.</p> -->
             </div>
-
             <!-- Relevant Courses & Skills -->
             <div class="overflow-x-auto whitespace-nowrap py-4 fade-in delay-1">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4 inline-block">Relevant Courses & Skills:</h3>
-                <br>
+                <!-- <h3 class="text-xl font-semibold text-gray-800 mb-4 inline-block">Relevant Courses & Skills:</h3> -->
+                <!-- <br> -->
                 <div class="inline-flex gap-4 animate-marquee">
                     <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Operating System</span>
                     <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Data Structures &
@@ -372,131 +368,245 @@
             </div>
 
             <!-- Tools & Technologies -->
+            <!-- Tools & Technologies Section -->
             <!-- Tools & Technologies -->
             <div class="mt-12 fade-in delay-3">
                 <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Tools & Technologies</h3>
-                <div class="flex flex-wrap justify-center gap-4">
 
-                    <!-- Tool Card Template -->
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-brain text-gray-700 text-2xl mr-2"></i>
-                        <span>TensorFlow</span>
+                <!-- Scroll wrapper -->
+                <div class="overflow-x-hidden py-4 relative">
+
+                    <!-- Scrolling content (duplicated for seamless loop) -->
+                    <div class="flex animate-marquee gap-4 min-w-max whitespace-nowrap">
+
+                        <!-- Begin Loop Block -->
+                        <div class="flex gap-4">
+                            <!-- Tool Cards (Repeatable Block) -->
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fas fa-eye text-blue-600 text-2xl mr-2"></i>
+                                <span>Computer Vision</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/tensorflow.png" alt="TensorFlow" class="w-8 h-8 mr-2" />
+                                <span>Tensor</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/pandas.png" alt="Pandas" class="w-8 h-8 mr-2" />
+                                <span>Pandas</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/numpy.png" alt="NumPy" class="w-8 h-8 mr-2" />
+                                <span>NumPy</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-docker text-blue-600 text-2xl mr-2"></i>
+                                <span>Docker</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-aws text-orange-500 text-2xl mr-2"></i>
+                                <span>AWS</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-react text-blue-600 text-2xl mr-2"></i>
+                                <span>React</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-node-js text-green-600 text-2xl mr-2"></i>
+                                <span>Node.js</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/mongodb.png" alt="MongoDB" class="w-8 h-8 mr-2" />
+                                <span>MongoDB</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/sql.png" alt="MySQL" class="w-8 h-8 mr-2" />
+                                <span>MySQL</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-git-alt text-red-600 text-2xl mr-2"></i>
+                                <span>Git</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-github text-black text-2xl mr-2"></i>
+                                <span>GitHub</span>
+                            </div>
+
+                            <div
+                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/pytorch.png" alt="PyTorch" class="w-8 h-8 mr-2" />
+                                <span>PyTorch</span>
+                            </div>
+                        </div>
+                        <!-- End Loop Block -->
+
+                        <!-- Duplicate the same block to create continuous loop -->
+                        <div class="flex gap-4">
+                            <!-- Same cards as above — exact copy -->
+                            <!-- (You can duplicate the above block directly here) -->
+                            <!-- ... paste the same block here again ... -->
+                        </div>
+
                     </div>
-                    <!-- Pandas -->
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-database text-green-600 text-2xl mr-2"></i>
-                        <span>Pandas</span>
-                    </div>
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-square-root-alt text-purple-600 text-2xl mr-2"></i>
-                        <span>NumPy</span>
-                    </div>
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-docker text-blue-600 text-2xl mr-2"></i>
-                        <span>Docker</span>
-                    </div>
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-aws text-orange-500 text-2xl mr-2"></i>
-                        <span>AWS</span>
-                    </div>
-
-
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-react text-blue-600 text-2xl mr-2"></i>
-                        <span>React</span>
-                    </div>
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-node-js text-green-600 text-2xl mr-2"></i>
-                        <span>Node.js</span>
-                    </div>
-                    <!-- MongoDB -->
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-database text-green-700 text-2xl mr-2"></i>
-                        <span>MongoDB</span>
-                    </div>
-                    <!-- SQL -->
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-database text-blue-700 text-2xl mr-2"></i>
-                        <span>MySQL</span>
-                    </div>
-
-                    <!-- New Tools -->
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-git-alt text-red-600 text-2xl mr-2"></i>
-                        <span>Git</span>
-                    </div>
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fab fa-github text-black text-2xl mr-2"></i>
-                        <span>GitHub</span>
-                    </div>
-
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-md flex items-center transform transition duration-300 hover:scale-105">
-                        <i class="fas fa-cogs text-purple-700 text-2xl mr-2"></i>
-                        <span>PyTorch</span>
-                    </div>
-
-
-
-
-
-
                 </div>
             </div>
 
-        </div>
-    </section>
 
-    <section id="experiencee" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4
-                    ">Online Courses and Certificates</h2>
-                <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
-            </div>
 
-            <!-- Training / Courses -->
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 fade-in delay-2">
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Web App Development & Data Structures</h3>
-                    <p class="text-gray-500 text-sm mb-4">Apna College (Virtual) · 2024–Present</p>
-                    <p class="text-gray-600">Gained expertise in JavaScript, MongoDB, Express.js, Node.js, and advanced
-                        data structures through hands-on projects and exercises.</p>
+
+            <!-- EXPERIENCE + CERTIFICATES WRAPPER -->
+            <section class="py-16 px-4 bg-white">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- LEFT: Experience Card (example) -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                            Web App Development & Data Structures
+                        </h3>
+                        <p class="text-gray-600 mb-1">
+                            Apna College (Virtual) · 2024–Present
+                        </p>
+                        <p class="text-gray-700">
+                            Gained expertise in JavaScript, MongoDB, Express.js, Node.js, and advanced data structures
+                            through hands‑on projects and exercises.
+                        </p>
+                    </div>
+
+                    <!-- RIGHT: Certificates Row -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Certificates</h3>
+                        <!-- Thumbnails + captions container -->
+                        <div id="cert-row" class="flex overflow-x-auto gap-6">
+
+                            <!-- Card 1 -->
+                            <div
+                                class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
+                                <img src="certificates/IIT_Kanpur.jpeg" alt="Data Science Bootcamp"
+                                    class="w-full h-24 object-cover">
+                                <div class="p-2 bg-gray-50">
+                                    <h4 class="text-sm font-semibold text-gray-800">Internship Complition Certificate
+                                    </h4>
+                                    <p class="text-xs text-gray-600">IIT Kanpur • Jan-June 2025</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div
+                                class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
+                                <img src="certificates/IIT Kanpur Work Experience Certificate.png"
+                                    alt="Industrial Internship" class="w-full h-24 object-cover">
+                                <div class="p-2 bg-gray-50">
+                                    <h4 class="text-sm font-semibold text-gray-800">Work Exp. Internship Certificate
+                                    </h4>
+                                    <p class="text-xs text-gray-600">IIT Kanpur • Jan–June 2025</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div
+                                class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
+                                <img src="certificates/DSA_Apna.png" alt="DSA Mastery" class="w-full h-24 object-cover">
+                                <div class="p-2 bg-gray-50">
+                                    <h4 class="text-sm font-semibold text-gray-800">DSA Course Complition</h4>
+                                    <p class="text-xs text-gray-600">Apna College • May 2025</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div
+                                class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
+                                <img src="certificates/Competition Wining Ceritificate.jpeg" alt="Hackathon Winner"
+                                    class="w-full h-24 object-cover">
+                                <div class="p-2 bg-gray-50">
+                                    <h4 class="text-sm font-semibold text-gray-800">State Lavel Competition Winner</h4>
+                                    <p class="text-xs text-gray-600">TechFest 2025 • 3rd Place</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div
+                                class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
+                                <img src="certificates/isp.png" alt="NPTEL ISP Program"
+                                    class="w-full h-24 object-cover">
+                                <div class="p-2 bg-gray-50">
+                                    <h4 class="text-sm font-semibold text-gray-800">ISP Program</h4>
+                                    <p class="text-xs text-gray-600">NPTEL • Sep 2024</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Certificates</h3>
-                    <p class="text-gray-600 mb-4">Explore detailed certificates for courses and achievements.</p>
-                    <a href="https://drive.google.com/drive/u/0/folders/14zv9fAwQPqj4qMM4GkOzIHmoxLOvqef1"
-                        class="text-indigo-500 hover:underline font-medium">View Certificates</a>
-                </div>
-            </div>
-            <!-- Key Accomplishments Card -->
-            <div class="mt-12 fade-in delay-3">
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Accomplishments</h3>
-                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
-                        <li>Ranked 5th in State-Level General Knowledge & Aptitude Test.</li>
+            </section>
+
+            <!-- KEY ACCOMPLISHMENTS (follows immediately) -->
+            <section class="py-16 px-4 bg-gray-50">
+                <div class="max-w-6xl mx-auto bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Key Accomplishments</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Ranked 5th in State‑Level General Knowledge & Aptitude Test.</li>
                         <li>Won cash prize for best rank in intercollege competition.</li>
                         <li>Awarded 1st prize in intercollege drawing competition.</li>
                     </ul>
                 </div>
+            </section>
+
+            <!-- FULL‑SCREEN MODAL -->
+            <div id="cert-modal"
+                class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden">
+                <div class="relative max-w-full max-h-full">
+                    <button id="modal-close" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+                    <img id="modal-img" src="" alt="Certificate" class="max-w-full max-h-screen rounded-lg shadow-lg">
+                </div>
             </div>
+
+            <!-- JS (vanilla) -->
+            <script>
+                // Grab elements
+                const thumbs = document.querySelectorAll('.cert-thumb img');
+                const modal = document.getElementById('cert-modal');
+                const modalImg = document.getElementById('modal-img');
+                const closeBtn = document.getElementById('modal-close');
+
+                // Open modal on click
+                thumbs.forEach(img => {
+                    img.parentElement.addEventListener('click', () => {
+                        modalImg.src = img.src;
+                        modal.classList.remove('hidden');
+                    });
+                });
+
+                // Close modal
+                closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+                modal.addEventListener('click', e => {
+                    if (e.target === modal) modal.classList.add('hidden');
+                });
+            </script>
+
 
     </section>
 
@@ -685,7 +795,7 @@
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
                 <p>&copy; 2024 Deepak Kumar. All rights reserved.</p>
             </div>
-            <p>Total Visitors: <span id="visitor-count">Loading...</span></p>
+
 
         </div>
     </footer>
