@@ -1,3 +1,14 @@
+
+
+
+
+  fetch('https://api.countapi.xyz/update/deepak-portfolio/visits/?amount=1')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitor-count').innerText = data.value;
+    });
+
+
 // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
