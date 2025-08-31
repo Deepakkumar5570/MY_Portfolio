@@ -160,6 +160,19 @@ const experiences = [
             <li>Focus score filter (Laplacian variance)</li>
             <li>End‑to‑end detection & inference pipeline</li>
           </ul>`
+    },
+
+    {
+        title: "SugarCane Leaves Disease Detection and Classification",
+        org: "CSVTU Bhilai, Chhattisgarh",
+        content: `
+          <p>This research project focuses on developing a deep learning-based pipeline for early detection and 
+            classification of sugarcane leaf diseases.</p>
+          <ul class="list-disc pl-5">
+            <li>  Multiple backbone architectures including ResNet18, VGG16, and Vision Transformers are trained individually 
+            and in fusion setups.</li>
+            <li>Implementing the Segmentation model for precise leaf disease localization</li>
+          </ul>`
     }
 ];
 
