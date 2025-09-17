@@ -41,4 +41,10 @@ portfolio-website/
 ```bash
 git clone https://github.com/<Deepakkumar5570>/MY_Portfolio.git
 
+```
+##
+Copyright©️ Deepakkumar5570 Inc. All rights reserved.
+
+
+
 
