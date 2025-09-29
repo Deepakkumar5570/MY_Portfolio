@@ -1,9 +1,4 @@
 
-
-
-
-
-
 // Mobile menu toggle
 document.getElementById('mobile-menu-button').addEventListener('click', function () {
     const menu = document.getElementById('mobile-menu');
