@@ -122,30 +122,46 @@ if (skillsSection) {
 
 // Experience modal functionality
 const experiences = [
-    {
-        title: "Early Stage Disease Detection in Plant Leaves",
-        org: "Perception & Intelligence Lab, IIT Kanpur",
-        content: `
-          <p>Built a Raspberry Pi based UV/non‑UV imaging box to capture plants leaves dataset of healthy/unhealthy in lab condition.
-            Designed and implemented an end-to-end solution leveraging visible and ultraviolet (UV 365nm, 395nm) spectral bands to capture early-stage leaf disease symptoms under controlled lab conditions.</p>
+  {
+    title: "Early-Stage Plant Leaf Disease Detection",
+    org: "Perception & Intelligence Lab, IIT Kanpur",
+    content: `
+      <p>Developed an end-to-end solution for early-stage disease detection in plant leaves using a custom Raspberry Pi-based imaging setup. 
+      The system captures high-resolution images under both visible and ultraviolet light (UV 365nm and 395nm) to detect subtle disease symptoms that are not easily visible under normal conditions.</p>
+
+      <ul class="list-disc pl-5">
+        <li><strong>Dataset Collection:</strong> Captured and labeled over 14,000 images of healthy and diseased plant leaves under controlled laboratory conditions.</li>
+        <li><strong>Preprocessing:</strong> Applied region-of-interest (ROI) cropping and contrast enhancement to improve model input quality.</li>
+        <li><strong>Modeling & Analysis:</strong> 
           <ul class="list-disc pl-5">
-            <li>14k+ UV/visible images captured & labeled</li>
-            <li>Preprocessing: ROI cropping, contrast enhancement</li>
-            <li>Modeling: ResNet18 Fusion Model (Accuracy 88.73% on combined dataset UV+RGB), VGG16 model (obtained 87.76% accuracy on combbined modalities UV+RGB),  SVM & XGboost (82.17% & 81.14% on combined modalities UV+RGB), Vision Transformers (70.61% accuracy on combined modalities UV+RGB)</li>
-            <Li>Future Work: The best-performing model from our experiments—identified through extensive evaluation on multimodal UV 
-            and visible spectrum data—will be further optimized for accuracy, speed, and robustness. This refined model will then be deployed on mobile-compatible edge devices (such as Raspberry Pi with camera modules or Android-integrated systems) to enable on-field, real-time early-stage disease detection, empowering farmers with a low-cost, accessible tool for timely crop health monitoring and intervention.</li>
-          </ul>`
-    },
-    {
-        title: "Spectral Response Analysis for Plant Health",
-        org: "Perception & Intelligence Lab, IIT Kanpur",
-        content: `
-          <p>Analyzed VNIR hyperspectral data to detect stress & disease signatures.</p>
-          <ul class="list-disc pl-5">
-            <li>PCA & band‑ratio feature extraction</li>
-            <li></li>
-          </ul>`
-    },
+            <li>ResNet18 Fusion Model achieved 88.73% accuracy on combined UV+RGB dataset.</li>
+            <li>VGG16 model achieved 87.76% accuracy on combined UV+RGB modalities.</li>
+            <li>SVM & XGBoost classifiers achieved 82.17% and 81.14% accuracy, respectively.</li>
+            <li>Vision Transformer (ViT) achieved 70.61% accuracy on combined UV+RGB data.</li>
+          </ul>
+        </li>
+        <li><strong>Future Work:</strong> The highest-performing model from these experiments will be further optimized for speed, accuracy, and robustness. 
+            The refined model will be deployed on mobile-compatible edge devices, such as Raspberry Pi with camera modules or Android-integrated systems, enabling real-time, on-field early disease detection. 
+            This approach provides a low-cost, accessible solution for farmers to monitor crop health and take timely preventive measures.</li>
+      </ul>
+    `
+},
+
+   {
+    title: "Spectral Response Analysis for Plant Health",
+    org: "Perception & Intelligence Lab, IIT Kanpur",
+    content: `
+      <p>Conducted detailed analysis of Visible-Near Infrared (VNIR) hyperspectral data to identify stress and disease signatures in plants. 
+      This work aimed to leverage spectral information beyond the visible range to detect physiological changes in crops at an early stage.</p>
+
+      <ul class="list-disc pl-5">
+        <li><strong>Feature Extraction:</strong> Applied Principal Component Analysis (PCA) and band-ratio techniques to extract meaningful spectral features associated with plant health.</li>
+        <li><strong>Stress & Disease Detection:</strong> Identified key spectral signatures that differentiate healthy plants from those under biotic or abiotic stress.</li>
+        <li><strong>Data-driven Insights:</strong> Provided insights to guide downstream machine learning models for automated early detection of plant diseases.</li>
+      </ul>
+    `
+},
+
     {
         title: "Automated Leaf Disease Detection",
         org: "Perception & Intelligence Lab, IIT Kanpur",
@@ -157,18 +173,25 @@ const experiences = [
           </ul>`
     },
 
-    {
-        title: "SugarCane Leaves Disease Detection and Classification",
-        org: "CSVTU Bhilai, Chhattisgarh",
-        content: `
-          <p>This research project focuses on developing a deep learning-based pipeline for early detection and 
-            classification of sugarcane leaf diseases.</p>
-          <ul class="list-disc pl-5">
-            <li>  Multiple backbone architectures including ResNet18, VGG16, and Vision Transformers are trained individually 
-            and in fusion setups.</li>
-            <li>Implementing the Segmentation model for precise leaf disease localization</li>
-          </ul>`
-    }
+ {
+    title: "Sugarcane Leaf Disease Detection and Classification",
+    org: "CSVTU Bhilai, Chhattisgarh",
+    content: `
+      <p>This research project focused on developing a comprehensive deep learning pipeline for the early detection and classification of sugarcane leaf diseases. 
+      The workflow covered the entire process, from dataset collection to model evaluation, enabling accurate and automated disease diagnosis.</p>
+
+      <ul class="list-disc pl-5">
+        <li><strong>Dataset Collection:</strong> Prepared large dataset of sugarcane leaves under controlled laboratory conditions, including both healthy and diseased samples.</li>
+        <li><strong>Preprocessing:</strong> Applied image enhancement techniques, ROI (Region of Interest) extraction, and normalization to ensure high-quality input for the models.</li>
+        <li><strong>Segmentation:</strong> Implemented a segmentation model to precisely localize leaf areas and diseased regions, improving the accuracy of subsequent classification.</li>
+        <li><strong>Feature Extraction & ROI Analysis:</strong> Extracted meaningful features from segmented regions to focus the model on relevant disease patterns.</li>
+        <li><strong>Model Training:</strong> Trained multiple deep learning architectures including ResNet18, VGG16, and Vision Transformers individually, and experimented with fusion models combining these backbones for enhanced performance.</li>
+        <li><strong>Model Evaluation & Findings:</strong> Compared model performance using metrics such as accuracy and F1-score to identify the best-performing architecture for real-world deployment.</li>
+        <li><strong>Future Work:</strong> The optimized model will be adapted for edge devices to provide farmers with an accessible tool for real-time sugarcane disease detection in the field.</li>
+      </ul>
+    `
+}
+
 ];
 
 function openExperienceModal(i) {
@@ -254,6 +277,48 @@ btn.addEventListener('click', () => {
     menu.classList.toggle('hidden');
 });
 
+// Dark mode toggle
+const darkToggle = document.getElementById('darkModeToggle');
+const darkIcon = document.getElementById('darkModeIcon');
+
+function applyDarkMode(isDark) {
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        // Font Awesome 6 solid moon
+        if (darkIcon) darkIcon.className = 'fa-solid fa-moon text-lg';
+    } else {
+        document.documentElement.classList.remove('dark');
+        // show solid sun in light mode
+        if (darkIcon) darkIcon.className = 'fa-solid fa-sun text-lg';
+    }
+}
+
+// Initialize from localStorage or system preference
+function getInitialDarkPref() {
+    try {
+        const stored = localStorage.getItem('prefersDark');
+        if (stored === 'true') return true;
+        if (stored === 'false') return false;
+    } catch (e) { /* ignore */ }
+    // fallback to OS preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
+    return false;
+}
+
+const initial = getInitialDarkPref();
+applyDarkMode(initial);
+if (darkToggle) {
+    // set accessible pressed state
+    darkToggle.setAttribute('aria-pressed', initial ? 'true' : 'false');
+
+    darkToggle.addEventListener('click', () => {
+        const isNowDark = !document.documentElement.classList.contains('dark');
+        applyDarkMode(isNowDark);
+        try { localStorage.setItem('prefersDark', isNowDark); } catch (e) {}
+        darkToggle.setAttribute('aria-pressed', isNowDark ? 'true' : 'false');
+    });
+}
+
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -268,4 +333,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+
+
 
