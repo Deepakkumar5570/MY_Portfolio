@@ -175,14 +175,21 @@ function openExperienceModal(i) {
     const modal = document.getElementById('experienceModal');
     const content = document.getElementById('modalContent');
     const exp = experiences[i];
-    content.innerHTML = `
-        <h3 class="text-2xl font-bold">${exp.title}</h3>
-        <p class="text-blue-500">${exp.org}</p>
-        ${exp.content}
-      `;
+        content.innerHTML = `
+                <h3 id="modalTitle" class="text-2xl font-bold">${exp.title}</h3>
+                <p class="text-blue-500">${exp.org}</p>
+                ${exp.content}
+            `;
     document.getElementById('experienceCards').classList.add('hidden');
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+
+    // Focus management: move focus into modal for accessibility
+    const dialog = modal.querySelector('.modal-dialog');
+    if (dialog) {
+        dialog.setAttribute('tabindex', '-1');
+        dialog.focus();
+    }
 }
 
 function closeExperienceModal() {
@@ -193,6 +200,30 @@ function closeExperienceModal() {
 document.querySelectorAll('.experience-card').forEach((card, index) => {
     card.addEventListener('click', () => openExperienceModal(index));
 });
+
+// Close modal when clicking on backdrop (outside the dialog)
+const experienceModal = document.getElementById('experienceModal');
+if (experienceModal) {
+    experienceModal.addEventListener('click', function (e) {
+        // If the click target is the backdrop (the modal container itself), close
+        if (e.target === experienceModal) {
+            closeExperienceModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !experienceModal.classList.contains('hidden')) {
+            closeExperienceModal();
+        }
+    });
+
+    // Make close button easier to find
+    const modalClose = document.getElementById('modalCloseBtn');
+    if (modalClose) {
+        modalClose.addEventListener('click', closeExperienceModal);
+    }
+}
 
 
 const trigger = document.getElementById('cert-trigger');

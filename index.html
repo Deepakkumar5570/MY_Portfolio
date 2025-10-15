@@ -181,8 +181,8 @@
 
                         </div>
                         <div class="flex space-x-4">
-                            <a href="" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
-                            <a href="https://github.com/Deepakkumar5570/rag-multidoc-chatbot"
+                            <a href="https://letstart.streamlit.app/" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="https://github.com/Deepakkumar5570/RAG_Q-A_Chatbot"
                                 class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         </div>
                     </div>
@@ -403,7 +403,7 @@
                         </div>
                         <div class="flex space-x-4">
                             <a href="https://weatherapp-47.netlify.app/" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
-                            <a href="#" class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
+                            <a href="https://github.com/Deepakkumar5570/MY_Portfolio" class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         </div>
                     </div>
                 </div>
@@ -552,10 +552,11 @@
 
 
         <!-- Modal Popup -->
-        <div id="experienceModal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50">
+        <div id="experienceModal" class="fixed inset-0 bg-black bg-opacity-70 hidden z-50" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
             <div class="flex items-center justify-center min-h-screen px-4">
-                <div class="bg-white rounded-2xl w-full max-w-4xl p-10 relative shadow-2xl">
-                    <button onclick="closeExperienceModal()"
+                <!-- add .modal-dialog for targeted styling -->
+                <div class="modal-dialog bg-white rounded-2xl w-full max-w-4xl p-6 md:p-10 relative shadow-2xl">
+                    <button id="modalCloseBtn" onclick="closeExperienceModal()" aria-label="Close dialog"
                         class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                     <div id="modalContent" class="text-gray-700 space-y-4"></div>
                 </div>

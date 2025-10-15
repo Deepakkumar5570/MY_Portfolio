@@ -172,3 +172,35 @@
          height: auto;
      }
  }
+
+/* Modal responsive / scrollable styles */
+.modal-dialog {
+    /* Keep dialog from overflowing the viewport */
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Tweak padding / radius on very small screens */
+@media (max-width: 480px) {
+    .modal-dialog {
+        max-width: 96%;
+        border-radius: 0.75rem;
+        padding: 1rem;
+    }
+}
+
+/* Make sure modal content has readable line length and internal spacing */
+.modal-dialog #modalContent {
+    padding-bottom: 1rem;
+}
+
+/* Ensure close button is easy to tap on mobile */
+#modalCloseBtn {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+}
