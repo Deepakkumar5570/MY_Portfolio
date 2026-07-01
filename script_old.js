@@ -3,55 +3,10 @@
 
 
 
-// Back to top button
-const backToTopButton = document.getElementById('backToTop');
 
-window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-    } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
-    }
-});
 
-backToTopButton.addEventListener('click', function () {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
 
-// Contact form submission (simulating MERN backend)
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
 
-    // Simulate form submission to a backend
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
-
-    // In a real MERN app, you would send this data to your Express backend
-    console.log('Form data to be sent to backend:', formData);
-
-    // Simulate API call with setTimeout
-    setTimeout(() => {
-        // Show success message
-        document.getElementById('formSuccess').classList.remove('hidden');
-
-        // Reset form
-        document.getElementById('contactForm').reset();
-
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-            document.getElementById('formSuccess').classList.add('hidden');
-        }, 5000);
-    }, 1000);
-});
 
 // Animate elements when they come into view
 const observerOptions = {

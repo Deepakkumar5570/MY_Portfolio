@@ -9,5 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initNavbar();
 
     initSmoothScroll();
+    initBackToTop();
+
+    initContactForm();
 
 });

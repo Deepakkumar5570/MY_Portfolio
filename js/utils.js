@@ -26,3 +26,26 @@ function scrollToElement(target, offset = 80) {
         behavior: "smooth"
     });
 }
+
+// =========================================
+// Event Helper
+// =========================================
+
+function on(element, event, handler, options = false) {
+    if (element) {
+        element.addEventListener(event, handler, options);
+    }
+}
+
+// =========================================
+// Storage Helpers
+// =========================================
+
+function save(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function load(key, defaultValue = null) {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+}
