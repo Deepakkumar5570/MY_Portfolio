@@ -49,3 +49,26 @@ function load(key, defaultValue = null) {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
 }
+
+
+
+// =========================================
+// Form Utilities
+// =========================================
+
+function getValue(selector) {
+    const element = $(selector);
+    return element ? element.value.trim() : "";
+}
+
+function show(element) {
+    if (element) {
+        element.classList.remove("hidden");
+    }
+}
+
+function hide(element) {
+    if (element) {
+        element.classList.add("hidden");
+    }
+}

@@ -1,16 +1,21 @@
-// =========================================
-// Application Entry Point
-// =========================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("Portfolio Initialized 🚀");
+    console.log("Portfolio Started 🚀");
 
     initNavbar();
 
     initSmoothScroll();
+
     initBackToTop();
 
     initContactForm();
+
+    initExperienceModal();
+
+    renderHeroProfile();
+
+    renderHeroStats();
+
+    initCounters();
 
 });
