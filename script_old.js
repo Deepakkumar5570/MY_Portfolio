@@ -118,10 +118,10 @@ if (skillsSection) {
 
 // Experience modal functionality
 const experiences = [
-  {
-    title: "Early-Stage Plant Leaf Disease Detection",
-    org: "Perception & Intelligence Lab, IIT Kanpur",
-    content: `
+    {
+        title: "Early-Stage Plant Leaf Disease Detection",
+        org: "Perception & Intelligence Lab, IIT Kanpur",
+        content: `
       <p>Developed an end-to-end solution for early-stage disease detection in plant leaves using a custom Raspberry Pi-based imaging setup. 
       The system captures high-resolution images under both visible and ultraviolet light (UV 365nm and 395nm) to detect subtle disease symptoms that are not easily visible under normal conditions.</p>
 
@@ -141,12 +141,12 @@ const experiences = [
             This approach provides a low-cost, accessible solution for farmers to monitor crop health and take timely preventive measures.</li>
       </ul>
     `
-},
+    },
 
-   {
-    title: "Spectral Response Analysis for Plant Health",
-    org: "Perception & Intelligence Lab, IIT Kanpur",
-    content: `
+    {
+        title: "Spectral Response Analysis for Plant Health",
+        org: "Perception & Intelligence Lab, IIT Kanpur",
+        content: `
       <p>Conducted detailed analysis of Visible-Near Infrared (VNIR) hyperspectral data to identify stress and disease signatures in plants. 
       This work aimed to leverage spectral information beyond the visible range to detect physiological changes in crops at an early stage.</p>
 
@@ -156,7 +156,7 @@ const experiences = [
         <li><strong>Data-driven Insights:</strong> Provided insights to guide downstream machine learning models for automated early detection of plant diseases.</li>
       </ul>
     `
-},
+    },
 
     {
         title: "Automated Leaf Disease Detection",
@@ -169,24 +169,32 @@ const experiences = [
           </ul>`
     },
 
- {
-    title: "Sugarcane Leaf Disease Detection and Classification",
-    org: "CSVTU Bhilai, Chhattisgarh",
-    content: `
+    {
+        title: "Sugarcane Leaf Disease Detection and Classification",
+        org: "CSVTU Bhilai, Chhattisgarh",
+        content: `
       <p>This research project focused on developing a comprehensive deep learning pipeline for the early detection and classification of sugarcane leaf diseases. 
       The workflow covered the entire process, from dataset collection to model evaluation, enabling accurate and automated disease diagnosis.</p>
 
       <ul class="list-disc pl-5">
-        <li><strong>Dataset Collection:</strong> Prepared large dataset of sugarcane leaves under controlled laboratory conditions, including both healthy and diseased samples.</li>
-        <li><strong>Preprocessing:</strong> Applied image enhancement techniques, ROI (Region of Interest) extraction, and normalization to ensure high-quality input for the models.</li>
-        <li><strong>Segmentation:</strong> Implemented a segmentation model to precisely localize leaf areas and diseased regions, improving the accuracy of subsequent classification.</li>
-        <li><strong>Feature Extraction & ROI Analysis:</strong> Extracted meaningful features from segmented regions to focus the model on relevant disease patterns.</li>
-        <li><strong>Model Training:</strong> Trained multiple deep learning architectures including ResNet18, VGG16, and Vision Transformers individually, and experimented with fusion models combining these backbones for enhanced performance.</li>
-        <li><strong>Model Evaluation & Findings:</strong> Compared model performance using metrics such as accuracy and F1-score to identify the best-performing architecture for real-world deployment.</li>
-        <li><strong>Future Work:</strong> The optimized model will be adapted for edge devices to provide farmers with an accessible tool for real-time sugarcane disease detection in the field.</li>
-      </ul>
+       <ul>
+  <li><strong>Dataset Source (Kaggle):</strong> Utilized and curated a large-scale sugarcane leaf dataset from Kaggle, ensuring diversity across healthy and multiple disease classes for robust model generalization.</li>
+
+
+  <li><strong>Preprocessing:</strong> Applied advanced image preprocessing techniques including contrast enhancement, noise reduction, ROI (Region of Interest) extraction, and normalization to improve input quality and model performance.</li>
+
+  <li><strong>Segmentation:</strong> Developed and implemented segmentation techniques to accurately isolate leaf regions and infected areas, enabling precise focus on disease-affected portions.</li>
+
+  <li><strong>Feature Extraction & ROI Analysis:</strong> Extracted discriminative features from segmented regions, allowing the model to learn fine-grained disease patterns and reduce background noise impact.</li>
+
+  <li><strong>Model Training:</strong> Trained and optimized multiple deep learning architectures including <strong>ResNet18</strong>, <strong>VGG16</strong>, and <strong>Vision Transformers</strong>, along with hybrid fusion models to leverage complementary strengths of different architectures.</li>
+
+  <li><strong>Model Evaluation & Findings:</strong> Conducted extensive evaluation using metrics such as accuracy, precision, recall, and F1-score to identify the most effective model for deployment.</li>
+
+  <li><strong>Key Achievement:</strong> Trained and evaluated multiple deep learning models achieving <strong>96% accuracy</strong>, outperforming baseline approaches by ~5%. The research has been <strong>submitted to Springer Nature</strong>, demonstrating its novelty and real-world impact.</li>
+</ul>
     `
-}
+    }
 
 ];
 
@@ -194,7 +202,7 @@ function openExperienceModal(i) {
     const modal = document.getElementById('experienceModal');
     const content = document.getElementById('modalContent');
     const exp = experiences[i];
-        content.innerHTML = `
+    content.innerHTML = `
                 <h3 id="modalTitle" class="text-2xl font-bold">${exp.title}</h3>
                 <p class="text-blue-500">${exp.org}</p>
                 ${exp.content}
@@ -310,7 +318,7 @@ if (darkToggle) {
     darkToggle.addEventListener('click', () => {
         const isNowDark = !document.documentElement.classList.contains('dark');
         applyDarkMode(isNowDark);
-        try { localStorage.setItem('prefersDark', isNowDark); } catch (e) {}
+        try { localStorage.setItem('prefersDark', isNowDark); } catch (e) { }
         darkToggle.setAttribute('aria-pressed', isNowDark ? 'true' : 'false');
     });
 }
