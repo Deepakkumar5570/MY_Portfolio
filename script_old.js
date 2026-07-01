@@ -1,28 +1,7 @@
 
 
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        }
-    });
-});
 
 // Back to top button
 const backToTopButton = document.getElementById('backToTop');
@@ -323,18 +302,5 @@ if (darkToggle) {
     });
 }
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        menu.classList.add('hidden'); // Close mobile menu on click
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 60, // adjust for fixed navbar height
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+
 
