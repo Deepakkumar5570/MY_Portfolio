@@ -1,9 +1,5 @@
 
-// Mobile menu toggle
-document.getElementById('mobile-menu-button').addEventListener('click', function () {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-});
+
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
