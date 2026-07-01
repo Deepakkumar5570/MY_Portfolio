@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",()=>{
 
     console.log("Portfolio Started 🚀");
 
@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHeroProfile();
 
     renderHeroStats();
+
+    renderProjects();
 
     initCounters();
 
