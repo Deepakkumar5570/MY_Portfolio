@@ -3,14 +3,11 @@
 // =========================================
 
 function initSmoothScroll() {
-
     const links = $$('a[href^="#"]');
     const mobileMenu = $("#mobile-menu");
 
-    links.forEach(link => {
-
+    links.forEach((link) => {
         link.addEventListener("click", function (e) {
-
             const targetId = this.getAttribute("href");
 
             if (!targetId || targetId === "#") return;
@@ -21,14 +18,19 @@ function initSmoothScroll() {
 
             e.preventDefault();
 
-            scrollToElement(target, 70);
+            scrollToElement(target, 80);
 
             if (mobileMenu) {
                 addClass(mobileMenu, "hidden");
+                const button = $("#mobile-menu-button");
+                if (button) {
+                    button.setAttribute("aria-expanded", "false");
+                }
             }
 
+            if (history.pushState) {
+                history.pushState(null, "", targetId);
+            }
         });
-
     });
-
 }

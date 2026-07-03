@@ -1,76 +1,78 @@
-// ============================================
-// Projects Database
-// ============================================
-
 const projects = [
 
 {
-    id:1,
+id:1,
 
-    title:"JobMatchAI",
+featured:true,
 
-    description:"AI-powered Resume Analysis Platform using Gemini, LangChain and FastAPI.",
+category:"AI",
 
-    image:"images/projects/jobmatchai.png",
+title:"JobMatchAI",
 
-    technologies:[
-        "Python",
-        "FastAPI",
-        "React",
-        "Gemini",
-        "LangChain"
-    ],
+description:"AI Resume Analyzer using Gemini + LangChain + FastAPI.",
 
-    github:"https://github.com/Deepakkumar5570",
+image:"images/projects/jobmatchai.png",
 
-    demo:"#",
+github:"https://github.com/Deepakkumar5570",
 
-    featured:true
+demo:"#",
+
+stack:[
+"Python",
+"FastAPI",
+"React",
+"Gemini",
+"LangChain"
+]
 },
 
 {
-    id:2,
+id:2,
 
-    title:"Sugarcane Disease Detection",
+featured:true,
 
-    description:"Deep Learning pipeline for early-stage disease detection using RGB and UV imaging.",
+category:"Research",
 
-    image:"images/projects/sugarcane.png",
+title:"Sugarcane Disease Detection",
 
-    technologies:[
-        "PyTorch",
-        "OpenCV",
-        "Computer Vision",
-        "Deep Learning"
-    ],
+description:"Deep Learning based Disease Detection using RGB + UV Imaging.",
 
-    github:"https://github.com/Deepakkumar5570",
+image:"images/projects/sugarcane.png",
 
-    demo:"#",
+github:"https://github.com/Deepakkumar5570",
 
-    featured:true
+demo:"#",
+
+stack:[
+"PyTorch",
+"OpenCV",
+"ViT",
+"Computer Vision"
+]
 },
 
 {
-    id:3,
+id:3,
 
-    title:"MediVerse",
+featured:true,
 
-    description:"AI-powered medical learning platform for Pharmacy, Nursing and Healthcare students.",
+category:"Web",
 
-    image:"images/projects/mediverse.png",
+title:"MediVerse",
 
-    technologies:[
-        "HTML",
-        "CSS",
-        "JavaScript"
-    ],
+description:"Medical Learning Platform for Healthcare Students.",
 
-    github:"https://github.com/Deepakkumar5570",
+image:"images/projects/mediverse.png",
 
-    demo:"#",
+github:"https://github.com/Deepakkumar5570",
 
-    featured:true
+demo:"#",
+
+stack:[
+"HTML",
+"CSS",
+"JavaScript"
+]
 }
 
 ];

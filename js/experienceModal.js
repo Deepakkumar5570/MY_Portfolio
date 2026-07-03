@@ -2,76 +2,72 @@
 // Experience Modal Module
 // =========================================
 
-function initExperienceModal() {
-
+function openExperienceModal(index) {
     const modal = $("#experienceModal");
     const modalContent = $("#modalContent");
-    const modalClose = $("#modalCloseBtn");
-    const cards = $$(".experience-card");
+    const exp = experiences?.[index];
 
-    if (!modal || !modalContent) {
-        console.warn("Experience Modal not found.");
+    if (!modal || !modalContent || !exp) {
         return;
     }
 
-    function openModal(index) {
+    modalContent.innerHTML = `
+        <h3 id="modalTitle" class="text-2xl font-bold">${exp.title}</h3>
+        <p class="text-blue-500 mb-4">${exp.org}</p>
+        ${exp.content}
+    `;
 
-        const exp = experiences[index];
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
-        modalContent.innerHTML = `
-            <h3 class="text-2xl font-bold">${exp.title}</h3>
-            <p class="text-blue-500 mb-4">${exp.org}</p>
-            ${exp.content}
-        `;
-
-        removeClass(modal, "hidden");
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-    function closeModal() {
-
-        addClass(modal, "hidden");
-
-        document.body.style.overflow = "";
-
-    }
-
-    cards.forEach((card, index) => {
-
-        card.addEventListener("click", () => {
-
-            openModal(index);
-
-        });
-
-    });
-
-    if (modalClose) {
-
-        modalClose.addEventListener("click", closeModal);
-
-    }
-
-    modal.addEventListener("click", function(e){
-
-        if(e.target===modal){
-
-            closeModal();
-
-        }
-
-    });
-
-    document.addEventListener("keydown", function(e){
-
-        if(e.key==="Escape"){
-
-            closeModal();
-
-        }
-
-    });
-
+    const closeButton = $("#modalCloseBtn");
+    closeButton?.focus();
 }
+
+function closeExperienceModal() {
+    const modal = $("#experienceModal");
+
+    if (!modal) return;
+
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+}
+
+function initExperienceModal() {
+    const modal = $("#experienceModal");
+    const modalClose = $("#modalCloseBtn");
+    const triggers = $$("[data-experience-index]");
+
+    if (!modal) {
+        return;
+    }
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            const index = Number(trigger.getAttribute("data-experience-index"));
+            openExperienceModal(index);
+        });
+    });
+
+    modalClose?.addEventListener("click", closeExperienceModal);
+
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeExperienceModal();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+            closeExperienceModal();
+        }
+    });
+}
+
+window.openExperienceModal = openExperienceModal;
+window.closeExperienceModal = closeExperienceModal;

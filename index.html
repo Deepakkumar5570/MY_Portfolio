@@ -32,7 +32,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- CSS -->
+    <style>
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 28s linear infinite;
+            will-change: transform;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .marquee-group {
+            flex-shrink: 0;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track { animation: none; }
+        }
+    </style>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projects.css">
 </head>
 
 <body class="bg-gray-50 font-sans antialiased">
@@ -49,9 +69,9 @@
 
                 <!-- Logo -->
 
-                <a href="#home" class="flex items-center gap-3">
+                <a href="#home" class="flex items-center gap-3" aria-label="Go to homepage">
 
-                    <img src="images/d.png" alt="Deepak Kumar Logo" class="h-14 w-14 rounded-full object-cover">
+                    <img src="images/d.png" alt="Deepak Kumar logo" class="h-14 w-14 rounded-full object-cover">
 
                     <span class="font-bold text-xl text-blue-600">
                         Deepak Kumar
@@ -77,7 +97,7 @@
 
                 <!-- Mobile Button -->
 
-                <button id="mobile-menu-button" aria-label="Toggle Menu" class="md:hidden text-gray-700">
+                <button id="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" class="md:hidden text-gray-700">
 
                     <i class="fa-solid fa-bars text-2xl"></i>
 
@@ -163,21 +183,21 @@
                     <div class="mt-10 flex flex-wrap gap-4">
 
                         <a href="#projects"
-                            class="px-7 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition">
+                            class="px-7 py-3 rounded-xl bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                             View Projects
 
                         </a>
 
                         <a href="#contact"
-                            class="px-7 py-3 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition">
+                            class="px-7 py-3 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                             Contact Me
 
                         </a>
 
                         <a href="assets/DK_resume__F.pdf" download
-                            class="px-7 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">
+                            class="px-7 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-500">
 
                             Download Resume
 
@@ -189,21 +209,21 @@
 
                     <div class="mt-10 flex items-center gap-6">
 
-                        <a href="https://github.com/Deepakkumar5570" target="_blank"
-                            class="text-3xl text-gray-700 hover:text-black transition">
+                        <a href="https://github.com/Deepakkumar5570" target="_blank" rel="noreferrer"
+                            class="text-3xl text-gray-700 hover:text-black transition focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1">
 
                             <i class="fab fa-github"></i>
 
                         </a>
 
-                        <a href="#" target="_blank" class="text-3xl text-blue-600 hover:text-blue-700 transition">
+                        <a href="https://www.linkedin.com/in/deepak-kumar-029781263/" target="_blank" rel="noreferrer" class="text-3xl text-blue-600 hover:text-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full p-1">
 
                             <i class="fab fa-linkedin"></i>
 
                         </a>
 
-                        <a href="mailto:your-email@example.com"
-                            class="text-3xl text-red-500 hover:text-red-600 transition">
+                        <a href="mailto:deepakkumar5570@gmail.com"
+                            class="text-3xl text-red-500 hover:text-red-600 transition focus:outline-none focus:ring-2 focus:ring-red-500 rounded-full p-1">
 
                             <i class="fas fa-envelope"></i>
 
@@ -237,7 +257,7 @@
 
                         <div class="relative rounded-full overflow-hidden border-[8px] border-white shadow-2xl">
 
-                            <img src="images/My_iMg.jpg" alt="Deepak Kumar" class="w-full h-full object-cover">
+                            <img src="images/My_iMg.jpg" alt="Deepak Kumar" class="w-full h-full object-cover" loading="lazy" decoding="async">
 
                         </div>
 
@@ -252,11 +272,47 @@
     </section>
 
 
+    <!-- Project card  -->
+
     <section id="projects">
 
-        <h2>Projects</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Projects</h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+            <div class="max-w-lg mx-auto mb-8">
 
-        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <label for="project-search" class="sr-only">Search projects</label>
+                <input id="project-search" type="text" placeholder="Search Projects..."
+                    class="w-full px-5 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="off">
+
+            </div>
+
+            <button class="filter-btn active" data-filter="All">
+
+                All
+
+            </button>
+
+            <button class="filter-btn" data-filter="AI">
+
+                AI
+
+            </button>
+
+            <button class="filter-btn" data-filter="Research">
+
+                Research
+
+            </button>
+
+            <button class="filter-btn" data-filter="Web">
+
+                Web
+
+            </button>
+
+        </div>
+
+        <div id="projects-container" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
         </div>
 
@@ -273,11 +329,11 @@
                     applications.</p>
             </div> -->
 
-            <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"> -->
+    <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"> -->
 
 
 
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
 
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="JobMatchAI"
@@ -315,9 +371,9 @@
 
 
 
-            <!-- Project 1 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1"> -->
-            <!-- 
+    <!-- Project 1 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1"> -->
+    <!-- 
 
 
 
@@ -347,10 +403,10 @@
                     </div>
                 </div> -->
 
-            <!-- Project 2 -->
+    <!-- Project 2 -->
 
 
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937553.jpg"
                             alt="Potato Disease Classifier" class="h-24">
@@ -380,8 +436,8 @@
 
 
 
-            <!-- project 3 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
+    <!-- project 3 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://miro.medium.com/v2/resize:fit:1200/1*R84n-IsnUKm-nD5D7_X-BQ.jpeg"
                             alt="Potato Disease Classifier" class="h-24">
@@ -399,18 +455,18 @@
 
 
                         </div> -->
-            <!-- <div class="flex space-x-4"> -->
-            <!-- <a href=""
+    <!-- <div class="flex space-x-4"> -->
+    <!-- <a href=""
                                 class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a> -->
-            <!-- <a href="https://github.com/Deepakkumar5570/YOLOv8_Leaves-detection"
+    <!-- <a href="https://github.com/Deepakkumar5570/YOLOv8_Leaves-detection"
                                 class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         </div>
                     </div>
                 </div> -->
 
-            <!-- Project 4 -->
+    <!-- Project 4 -->
 
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-1">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
                             alt="Potato Disease Classifier" class="h-24">
@@ -440,8 +496,8 @@
 
 
 
-            <!-- Project 5 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-2">
+    <!-- Project 5 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-2">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://imagetranslate.com/blog/content/images/2022/02/computer_vision_banner.png"
                             alt="OCR Rxtractiong" class="h-16">
@@ -464,8 +520,8 @@
                     </div>
                 </div> -->
 
-            <!-- Project 6 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-3">
+    <!-- Project 6 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-3">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4igQnwRd41CVpcP5wzLqORPqXdU6yp_hoHA&s"
                             alt="Movie Recommendation System" class="h-16">
@@ -488,8 +544,8 @@
                     </div>
                 </div> -->
 
-            <!-- Project 7 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4">
+    <!-- Project 7 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxffniRLY_ZIivktObXOLje7V-rTpWkiP_MQ&s"
                             alt="AirStay" class="h-16">
@@ -518,7 +574,7 @@
 
                 
                 <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4"> -->
-            <!-- <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
+    <!-- <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMcClW7YD7lUAzB8H0Q-fyfC0b0a9dXT2oiQ&s"
                             alt="AirStay" class="h-16">
                     </div>
@@ -544,8 +600,8 @@
                 </div>  -->
 
 
-            <!-- Project -9 -->
-            <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4">
+    <!-- Project -9 -->
+    <!-- <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg fade-in delay-4">
                     <div class="h-40 overflow-hidden bg-gray-100 flex items-center justify-center">
                         <img src="https://img.freepik.com/premium-psd/linkedin-3d-logo-social-media-icon-isolated_878388-42.jpg"
                             alt="AirStay" class="h-16">
@@ -570,21 +626,21 @@
                     </div>
                 </div> -->
 
-            <!-- Project -10 -->
+    <!-- Project -10 -->
 
 
 
 
 
-            <!-- </div> -->
+    <!-- </div> -->
 
 
-            <!-- <div class="text-center mt-12 fade-in delay-5">
+    <!-- <div class="text-center mt-12 fade-in delay-5">
                 <a href="#"
                     class="inline-block border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300">View
                     All Projects</a>
             </div> -->
-            <!-- </div> -->
+    <!-- </div> -->
     <!-- </section> -->
 
 
@@ -615,8 +671,8 @@
                     </div>
                     <!-- Links -->
                     <div class="flex space-x-4 mb-4">
-                        <a href="#" onclick="openExperienceModal(0)"
-                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="#" data-experience-index="0"
+                            class="text-blue-500 hover:text-blue-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Read More</a>
                         <a href="https://github.com/Deepakkumar5570/uv-nonuv-project" target="_blank"
                             class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         <a href="https://your-demo-link.com" target="_blank"
@@ -641,8 +697,8 @@
                     </div>
                     <!-- Links -->
                     <div class="flex space-x-4 mb-4">
-                        <a href="#" onclick="openExperienceModal(1)"
-                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="#" data-experience-index="1"
+                            class="text-blue-500 hover:text-blue-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Read More</a>
                         <a href="https://github.com/Deepakkumar5570/hyperspectral-analysis" target="_blank"
                             class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         <a href="https://your-demo-link.com" target="_blank"
@@ -676,8 +732,8 @@
                     </div>
                     <!-- Links -->
                     <div class="flex space-x-4 mb-4">
-                        <a href="#" onclick="openExperienceModal(3)"
-                            class="text-blue-500 hover:text-blue-700 font-medium">Read More</a>
+                        <a href="#" data-experience-index="3"
+                            class="text-blue-500 hover:text-blue-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Read More</a>
                         <a href="https://github.com/Deepakkumar5570/hyperspectral-analysis" target="_blank"
                             class="text-gray-500 hover:text-gray-700 font-medium">Code</a>
                         <a href="https://your-demo-link.com" target="_blank"
@@ -700,8 +756,8 @@
             <div class="flex items-center justify-center min-h-screen px-4">
                 <!-- add .modal-dialog for targeted styling -->
                 <div class="modal-dialog bg-white rounded-2xl w-full max-w-4xl p-6 md:p-10 relative shadow-2xl">
-                    <button id="modalCloseBtn" onclick="closeExperienceModal()" aria-label="Close dialog"
-                        class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    <button id="modalCloseBtn" type="button" aria-label="Close dialog"
+                        class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full">&times;</button>
                     <div id="modalContent" class="text-gray-700 space-y-4"></div>
                 </div>
             </div>
@@ -729,24 +785,34 @@
                 <!-- <p class="text-gray-600 max-w-2xl mx-auto">Core competencies, courses, trainings, and recognitions.</p> -->
             </div>
             <!-- Relevant Courses & Skills -->
-            <div class="overflow-x-auto whitespace-nowrap py-4 fade-in delay-1">
-                <!-- <h3 class="text-xl font-semibold text-gray-800 mb-4 inline-block">Relevant Courses & Skills:</h3> -->
-                <!-- <br> -->
-                <div class="inline-flex gap-4 animate-marquee">
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Operating System</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Data Structures &
-                        Algorithms</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Deep Learning</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Computer Networks</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Machine Learning</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Cryptography</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Python</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">NLP</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">OOPs</span>
-
-
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Scikit-Learn</span>
-                    <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">REST API</span>
+            <div class="overflow-hidden py-4 fade-in delay-1">
+                <div class="marquee-track flex min-w-max whitespace-nowrap">
+                    <div class="marquee-group flex gap-4 pr-4">
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Operating System</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Data Structures & Algorithms</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Deep Learning</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Computer Networks</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Machine Learning</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Cryptography</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Python</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">NLP</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">OOPs</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Scikit-Learn</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">REST API</span>
+                    </div>
+                    <div class="marquee-group flex gap-4 pr-4" aria-hidden="true">
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Operating System</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Data Structures & Algorithms</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Deep Learning</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Computer Networks</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Machine Learning</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Cryptography</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Python</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">NLP</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">OOPs</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">Scikit-Learn</span>
+                        <span class="px-4 py-2 bg-white shadow rounded-full text-gray-700">REST API</span>
+                    </div>
                 </div>
             </div>
 
@@ -757,101 +823,141 @@
                 <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Tools & Technologies</h3>
 
                 <!-- Scroll wrapper -->
-                <div class="overflow-x-hidden py-4 relative">
-
-                    <!-- Scrolling content (duplicated for seamless loop) -->
-                    <div class="flex animate-marquee gap-4 min-w-max whitespace-nowrap">
-
-                        <!-- Begin Loop Block -->
-                        <div class="flex gap-4">
-                            <!-- Tool Cards (Repeatable Block) -->
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                <div class="overflow-hidden py-4 relative">
+                    <div class="marquee-track flex min-w-max whitespace-nowrap">
+                        <div class="marquee-group flex gap-4 pr-4">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fas fa-eye text-blue-600 text-2xl mr-2"></i>
                                 <span>Computer Vision</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/tensorflow.png" alt="TensorFlow" class="w-8 h-8 mr-2" />
                                 <span>Tensor</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/pandas.png" alt="Pandas" class="w-8 h-8 mr-2" />
                                 <span>Pandas</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/numpy.png" alt="NumPy" class="w-8 h-8 mr-2" />
                                 <span>NumPy</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-docker text-blue-600 text-2xl mr-2"></i>
                                 <span>Docker</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-aws text-orange-500 text-2xl mr-2"></i>
                                 <span>AWS</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-react text-blue-600 text-2xl mr-2"></i>
                                 <span>React</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-node-js text-green-600 text-2xl mr-2"></i>
                                 <span>Node.js</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/mongodb.png" alt="MongoDB" class="w-8 h-8 mr-2" />
                                 <span>MongoDB</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/sql.png" alt="MySQL" class="w-8 h-8 mr-2" />
                                 <span>MySQL</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-git-alt text-red-600 text-2xl mr-2"></i>
                                 <span>Git</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <i class="fab fa-github text-black text-2xl mr-2"></i>
                                 <span>GitHub</span>
                             </div>
 
-                            <div
-                                class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
                                 <img src="images/pytorch.png" alt="PyTorch" class="w-8 h-8 mr-2" />
                                 <span>PyTorch</span>
                             </div>
                         </div>
-                        <!-- End Loop Block -->
 
-                        <!-- Duplicate the same block to create continuous loop -->
-                        <div class="flex gap-4">
-                            <!-- Same cards as above — exact copy -->
-                            <!-- (You can duplicate the above block directly here) -->
-                            <!-- ... paste the same block here again ... -->
+                        <div class="marquee-group flex gap-4 pr-4" aria-hidden="true">
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fas fa-eye text-blue-600 text-2xl mr-2"></i>
+                                <span>Computer Vision</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/tensorflow.png" alt="TensorFlow" class="w-8 h-8 mr-2" />
+                                <span>Tensor</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/pandas.png" alt="Pandas" class="w-8 h-8 mr-2" />
+                                <span>Pandas</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/numpy.png" alt="NumPy" class="w-8 h-8 mr-2" />
+                                <span>NumPy</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-docker text-blue-600 text-2xl mr-2"></i>
+                                <span>Docker</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-aws text-orange-500 text-2xl mr-2"></i>
+                                <span>AWS</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-react text-blue-600 text-2xl mr-2"></i>
+                                <span>React</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-node-js text-green-600 text-2xl mr-2"></i>
+                                <span>Node.js</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/mongodb.png" alt="MongoDB" class="w-8 h-8 mr-2" />
+                                <span>MongoDB</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/sql.png" alt="MySQL" class="w-8 h-8 mr-2" />
+                                <span>MySQL</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-git-alt text-red-600 text-2xl mr-2"></i>
+                                <span>Git</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <i class="fab fa-github text-black text-2xl mr-2"></i>
+                                <span>GitHub</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md flex items-center hover:scale-105 transition duration-300">
+                                <img src="images/pytorch.png" alt="PyTorch" class="w-8 h-8 mr-2" />
+                                <span>PyTorch</span>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -938,7 +1044,7 @@
                     <!-- Card 1 -->
                     <div class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
                         <img src="certificates/IIT_Kanpur.jpeg" alt="Data Science Bootcamp"
-                            class="w-full h-24 object-cover">
+                            class="w-full h-24 object-cover" loading="lazy" decoding="async">
                         <div class="p-2 bg-gray-50">
                             <h4 class="text-sm font-semibold text-gray-800">Internship Complition Certificate By IIT
                                 Kanpur
@@ -950,7 +1056,7 @@
                     <!-- Card 2 -->
                     <div class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
                         <img src="certificates/IIT Kanpur Work Experience Certificate.png" alt="Industrial Internship"
-                            class="w-full h-24 object-cover">
+                            class="w-full h-24 object-cover" loading="lazy" decoding="async">
                         <div class="p-2 bg-gray-50">
                             <h4 class="text-sm font-semibold text-gray-800">Work Exp. Internship Certificate By IIT
                                 Kanpur
@@ -986,7 +1092,7 @@
 
                     <!-- Card 4 -->
                     <div class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
-                        <img src="certificates/DSA_Apna.png" alt="DSA Mastery" class="w-full h-24 object-cover">
+                        <img src="certificates/DSA_Apna.png" alt="DSA Mastery" class="w-full h-24 object-cover" loading="lazy" decoding="async">
                         <div class="p-2 bg-gray-50">
                             <h4 class="text-sm font-semibold text-gray-800">By Apna College Course Complition
                             </h4>
@@ -997,7 +1103,7 @@
                     <!-- Card 5 -->
                     <div class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
                         <img src="certificates/Competition Wining Ceritificate.jpeg" alt="Hackathon Winner"
-                            class="w-full h-24 object-cover">
+                            class="w-full h-24 object-cover" loading="lazy" decoding="async">
                         <div class="p-2 bg-gray-50">
                             <h4 class="text-sm font-semibold text-gray-800">3rd Place State level</h4>
                             <p class="text-xs text-gray-600">DR.B.R Ambedkar G.K Competition• Apr 2015 </p>
@@ -1006,7 +1112,7 @@
 
                     <!-- Card 6-->
                     <div class="cert-thumb flex-shrink-0 w-40 rounded-lg overflow-hidden shadow-lg cursor-pointer">
-                        <img src="certificates/isp.png" alt="NPTEL ISP Program" class="w-full h-24 object-cover">
+                        <img src="certificates/isp.png" alt="NPTEL ISP Program" class="w-full h-24 object-cover" loading="lazy" decoding="async">
                         <div class="p-2 bg-gray-50">
                             <h4 class="text-sm font-semibold text-gray-800">ISP Program</h4>
                             <p class="text-xs text-gray-600">Sep 2024</p>
@@ -1032,26 +1138,33 @@
                 </div>
             </div>
 
-            <!-- JS (vanilla) -->
             <script>
-                // Grab elements
-                const thumbs = document.querySelectorAll('.cert-thumb img');
-                const modal = document.getElementById('cert-modal');
-                const modalImg = document.getElementById('modal-img');
-                const closeBtn = document.getElementById('modal-close');
+                const certificateThumbs = document.querySelectorAll('.cert-thumb img');
+                const certificateModal = document.getElementById('cert-modal');
+                const certificateModalImage = document.getElementById('modal-img');
+                const certificateCloseBtn = document.getElementById('modal-close');
 
-                // Open modal on click
-                thumbs.forEach(img => {
-                    img.parentElement.addEventListener('click', () => {
-                        modalImg.src = img.src;
-                        modal.classList.remove('hidden');
+                certificateThumbs.forEach((img) => {
+                    img.parentElement?.addEventListener('click', () => {
+                        certificateModalImage.src = img.src;
+                        certificateModal?.classList.remove('hidden');
+                        certificateModal?.setAttribute('aria-hidden', 'false');
+                        document.body.style.overflow = 'hidden';
                     });
                 });
 
-                // Close modal
-                closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
-                modal.addEventListener('click', e => {
-                    if (e.target === modal) modal.classList.add('hidden');
+                certificateCloseBtn?.addEventListener('click', () => {
+                    certificateModal?.classList.add('hidden');
+                    certificateModal?.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                });
+
+                certificateModal?.addEventListener('click', (event) => {
+                    if (event.target === certificateModal) {
+                        certificateModal.classList.add('hidden');
+                        certificateModal.setAttribute('aria-hidden', 'true');
+                        document.body.style.overflow = '';
+                    }
                 });
             </script>
 
@@ -1122,8 +1235,8 @@
             <p class="text-gray-600 max-w-2xl mx-auto mb-8">
 
                 <!-- Trigger Button -->
-                <button id="openContactBtn"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition">
+                <button id="openContactBtn" type="button"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Contact Me
                 </button>
         </div>
@@ -1132,8 +1245,8 @@
         <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
             <div class="bg-white rounded-lg w-full max-w-md p-6 relative fade-in animate-fade-in-down">
                 <!-- Close Button -->
-                <button id="closeModalBtn"
-                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl leading-none">
+                <button id="closeModalBtn" type="button" aria-label="Close contact form"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl leading-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full">
                     &times;
                 </button>
 
@@ -1158,7 +1271,7 @@
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>
                     <button type="submit"
-                        class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition">
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Send Message
                     </button>
                 </form>
@@ -1226,30 +1339,6 @@
     </script>
 
 
-    <!-- Modal Toggle & Form Handling Script -->
-    <script>
-        const openBtn = document.getElementById('openContactBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const modal = document.getElementById('contactModal');
-        const form = document.getElementById('contactForm');
-        const successMsg = document.getElementById('formSuccess');
-
-        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
-        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
-        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden'); });
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-            if (resp.ok) {
-                form.reset();
-                successMsg.classList.remove('hidden');
-            } else {
-                alert('Oops! There was a problem sending your message.');
-            }
-        });
-    </script>
     </section>
 
 
@@ -1299,8 +1388,8 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop"
-        class="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+    <button id="backToTop" type="button" aria-label="Back to top"
+        class="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
         <i class="fas fa-arrow-up"></i>
     </button>
     <script src="js/utils.js"></script>

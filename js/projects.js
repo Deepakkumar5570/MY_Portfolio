@@ -1,79 +1,129 @@
-// ============================================
-// Projects Renderer
-// ============================================
+// ======================================
+// Projects Engine
+// ======================================
 
-function renderProjects(){
+let currentCategory = "All";
+let currentSearch = "";
 
-    const container=document.getElementById("projects-container");
+function createTechChip(tech) {
+    return `
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-600">
+            ${tech}
+        </span>
+    `;
+}
 
-    if(!container) return;
+function isValidLink(url) {
+    if (!url) return false;
+    const normalized = String(url).trim();
+    if (!normalized || normalized === "#") return false;
+    return !/(your-demo-link|example\.com|demo)/i.test(normalized);
+}
 
-    container.innerHTML="";
+function createActionLink(label, url, className) {
+    if (isValidLink(url)) {
+        return `
+            <a href="${url}" target="_blank" rel="noopener noreferrer"
+                class="${className}">
+                ${label}
+            </a>
+        `;
+    }
 
-    projects.forEach(project=>{
+    return `
+        <span class="${className} opacity-60 cursor-not-allowed" aria-disabled="true">
+            ${label}
+        </span>
+    `;
+}
 
-        container.innerHTML+=`
+function createProjectCard(project) {
+    const title = project.title || "Project";
+    const description = project.description || "Project details coming soon.";
+    const stack = Array.isArray(project.stack) ? project.stack : [];
 
-<div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition duration-300">
+    return `
+        <article class="project-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-500 flex flex-col">
+            <div class="relative">
+                <img src="${project.image || ""}" alt="${title}" loading="lazy" decoding="async"
+                    class="w-full h-40 object-cover">
+                ${project.featured ? `<span class="absolute top-3 left-3 bg-yellow-400 text-black px-2.5 py-1 rounded-full text-[10px] font-bold">Featured</span>` : ""}
+                <span class="absolute top-3 right-3 bg-blue-600 text-white px-2.5 py-1 rounded-full text-[10px]">${project.category || "Project"}</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+                <h3 class="text-xl font-bold mb-2">${title}</h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">${description}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    ${stack.map(createTechChip).join("")}
+                </div>
+                <div class="mt-auto flex gap-2">
+                    ${createActionLink("GitHub", project.github, "flex-1 bg-gray-900 text-white text-center py-2.5 rounded-lg text-sm")}
+                    ${createActionLink("Demo", project.demo, "flex-1 bg-blue-600 text-white text-center py-2.5 rounded-lg text-sm")}
+                </div>
+            </div>
+        </article>
+    `;
+}
 
-<img src="${project.image}"
-alt="${project.title}"
-class="w-full h-52 object-cover">
+function getFilteredProjects() {
+    let filtered = [...projects];
 
-<div class="p-6">
+    if (currentCategory !== "All") {
+        filtered = filtered.filter((project) => project.category === currentCategory);
+    }
 
-<h3 class="text-2xl font-bold mb-3">
+    if (currentSearch !== "") {
+        const searchValue = currentSearch.toLowerCase();
+        filtered = filtered.filter((project) => {
+            const title = (project.title || "").toLowerCase();
+            const description = (project.description || "").toLowerCase();
+            const stack = (project.stack || []).join(" ").toLowerCase();
+            return title.includes(searchValue) || description.includes(searchValue) || stack.includes(searchValue);
+        });
+    }
 
-${project.title}
+    filtered.sort((a, b) => Number(b.featured) - Number(a.featured));
+    return filtered;
+}
 
-</h3>
+function renderProjects() {
+    const container = document.getElementById("projects-container");
 
-<p class="text-gray-600 mb-4">
+    if (!container) return;
 
-${project.description}
+    const filtered = getFilteredProjects();
 
-</p>
+    if (!filtered.length) {
+        container.innerHTML = `
+            <div class="col-span-full text-center py-16">
+                <h3 class="text-3xl font-bold mb-3">No Projects Found</h3>
+                <p class="text-gray-500">Try another search.</p>
+            </div>
+        `;
+        return;
+    }
 
-<div class="flex flex-wrap gap-2 mb-5">
+    container.innerHTML = filtered.map(createProjectCard).join("");
+}
 
-${project.technologies.map(tech=>
-
-`<span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">${tech}</span>`
-
-).join("")}
-
-</div>
-
-<div class="flex gap-4">
-
-<a href="${project.github}"
-
-target="_blank"
-
-class="bg-gray-900 text-white px-5 py-2 rounded-lg">
-
-GitHub
-
-</a>
-
-<a href="${project.demo}"
-
-target="_blank"
-
-class="bg-blue-600 text-white px-5 py-2 rounded-lg">
-
-Live Demo
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
+function initProjectFilters() {
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".filter-btn").forEach((button) => button.classList.remove("active"));
+            btn.classList.add("active");
+            currentCategory = btn.dataset.filter || "All";
+            renderProjects();
+        });
     });
+}
 
+function initProjectSearch() {
+    const input = document.getElementById("project-search");
+
+    if (!input) return;
+
+    input.addEventListener("input", (event) => {
+        currentSearch = event.target.value.trim().toLowerCase();
+        renderProjects();
+    });
 }

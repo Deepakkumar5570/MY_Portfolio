@@ -3,50 +3,25 @@
 // =========================================
 
 function initBackToTop() {
-
     const backToTopButton = $("#backToTop");
 
     if (!backToTopButton) {
-        console.warn("Back To Top button not found.");
         return;
     }
 
-    function toggleButton() {
+    const toggleButton = () => {
+        const shouldShow = window.scrollY > 300;
+        backToTopButton.classList.toggle("opacity-0", !shouldShow);
+        backToTopButton.classList.toggle("invisible", !shouldShow);
+        backToTopButton.classList.toggle("opacity-100", shouldShow);
+        backToTopButton.classList.toggle("visible", shouldShow);
+        backToTopButton.setAttribute("aria-hidden", String(!shouldShow));
+    };
 
-        if (window.scrollY > 300) {
-
-            removeClass(backToTopButton, "opacity-0");
-            removeClass(backToTopButton, "invisible");
-
-            addClass(backToTopButton, "opacity-100");
-            addClass(backToTopButton, "visible");
-
-        } else {
-
-            removeClass(backToTopButton, "opacity-100");
-            removeClass(backToTopButton, "visible");
-
-            addClass(backToTopButton, "opacity-0");
-            addClass(backToTopButton, "invisible");
-
-        }
-
-    }
-
-    window.addEventListener("scroll", toggleButton, {
-        passive: true
-    });
+    window.addEventListener("scroll", toggleButton, { passive: true });
+    toggleButton();
 
     backToTopButton.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
 }

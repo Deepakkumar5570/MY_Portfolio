@@ -1,0 +1,76 @@
+.project-card{
+    transition: .35s ease;
+    height: 100%;
+}
+
+.project-card:hover{
+    transform: translateY(-6px);
+}
+
+.filter-btn{
+
+padding:12px 25px;
+
+border-radius:50px;
+
+background:#eef4ff;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.filter-btn:hover{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+.filter-btn.active{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+#project-search{
+
+transition:.3s;
+
+}
+
+#project-search:focus{
+
+box-shadow:0 0 0 5px rgba(37,99,235,.15);
+
+}
+
+.project-card{
+
+animation:fadeIn .45s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}

@@ -1,7 +1,4 @@
-document.addEventListener("DOMContentLoaded",()=>{
-
-    console.log("Portfolio Started 🚀");
-
+document.addEventListener("DOMContentLoaded", () => {
     initNavbar();
 
     initSmoothScroll();
@@ -17,6 +14,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     renderHeroStats();
 
     renderProjects();
+
+    initProjectFilters();
+
+    initProjectSearch();
 
     initCounters();
 
